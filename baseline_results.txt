@@ -1,0 +1,46 @@
+PHISHGUARD BASELINE — CONTEXTUAL MODEL
+
+Dataset:
+PhishStorm cleaned dataset
+Total URLs: 95,908
+Legitimate: 48,009
+Phishing: 47,899
+
+Model:
+Random Forest
+37 URL features
+200 estimators
+
+Evaluation:
+Domain-grouped split
+Training URLs: 79,055
+Testing URLs: 16,853
+Overlapping domains: 0
+
+Results:
+Accuracy: 89.72%
+Phishing Precision: 90.31%
+Phishing Recall: 88.38%
+Phishing F1-score: 89.33%
+
+Confusion Matrix:
+TN: 7868
+FP: 778
+FN: 954
+TP: 7253
+
+Known limitation:
+The model incorrectly flags common legitimate
+homepage URLs as phishing.
+
+Homepage diagnostic:
+Google: 94.50% phishing score
+GitHub: 100.00%
+Python: 99.00%
+
+Primary suspected contributor:
+Path length and its interaction with URL length
+and other lexical features.
+
+Model file:
+models/phishguard_context_model.pkl
