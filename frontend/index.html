@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhishGuard | AI-Powered URL Security</title>
+    <meta name="description" content="PhishGuard cybersecurity URL analysis dashboard">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Background effects -->
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <a href="#" class="brand">
+            <span class="brand-icon">⬡</span>
+            <span>Phish<span class="accent">Guard</span></span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#scanner">Scanner</a>
+            <a href="#features">Features</a>
+        </nav>
+
+        <span class="status-indicator">
+            <span class="status-dot"></span>
+            UI Demo Mode
+        </span>
+    </header>
+
+    <main id="home">
+
+        <!-- Hero section -->
+        <section class="hero">
+            <div class="hero-badge">CYBERSECURITY • MACHINE LEARNING</div>
+
+            <h1>
+                Detect Threats.<br>
+                <span class="gradient-text">Browse Smarter.</span>
+            </h1>
+
+            <p class="hero-description">
+                Explore URL security analysis through an intelligent
+                cybersecurity dashboard powered by machine learning.
+            </p>
+
+            <a href="#scanner" class="primary-button">
+                Launch Scanner <span>↗</span>
+            </a>
+        </section>
+
+        <!-- URL Scanner -->
+        <section id="scanner" class="scanner-section">
+
+            <div class="section-heading">
+                <span class="eyebrow">THREAT ANALYSIS</span>
+                <h2>URL Security Scanner</h2>
+                <p>Enter a URL to explore the scanning interface.</p>
+            </div>
+
+            <div class="scanner-card">
+                <div class="scanner-card-header">
+                    <span>URL ANALYSIS CONSOLE</span>
+                    <span class="demo-tag">DEMO</span>
+                </div>
+
+                <form id="scanForm" class="scan-form">
+                    <label for="urlInput">Target URL</label>
+
+                    <div class="input-group">
+                        <input
+                            type="url"
+                            id="urlInput"
+                            placeholder="https://example.com"
+                            required
+                        >
+
+                        <button type="submit" id="scanButton">
+                            Scan URL
+                        </button>
+                    </div>
+                </form>
+
+                <p class="scanner-note">
+                    Interface demonstration only. Live ML scanning is not enabled.
+                </p>
+
+                
+<div id="scanResult" class="scan-result" hidden>
+    <div class="result-header">
+        <div>
+            <span class="eyebrow">DEMONSTRATION RESULT</span>
+            <h3 id="resultTitle">Scan preview</h3>
+        </div>
+        <span class="result-badge">PREVIEW ONLY</span>
+    </div>
+
+    <div class="result-grid">
+        <div class="result-metric">
+            <span class="metric-icon">◈</span>
+            <span class="metric-label">URL Format</span>
+            <strong id="formatStatus">Valid</strong>
+        </div>
+
+        <div class="result-metric">
+            <span class="metric-icon">⌁</span>
+            <span class="metric-label">Connection Protocol</span>
+            <strong id="protocolStatus">HTTPS</strong>
+        </div>
+
+        <div class="result-metric">
+            <span class="metric-icon">◎</span>
+            <span class="metric-label">ML Analysis</span>
+            <strong>Not Performed</strong>
+        </div>
+    </div>
+
+    <div class="result-details">
+        <h4>URL Information</h4>
+        <p id="resultDescription"></p>
+    </div>
+</div>
+
+            </div>
+
+<div class="history-card">
+    <div class="history-header">
+        <div>
+            <span class="eyebrow">RECENT ACTIVITY</span>
+            <h3>Scan History</h3>
+        </div>
+
+        <button id="clearHistory" class="clear-history-btn"
+                type="button">
+            Clear History
+        </button>
+    </div>
+
+    <p class="history-note">
+        URL previews from this browser session.
+        No ML classification has been performed.
+    </p>
+
+    <div id="historyList" class="history-list">
+        <p class="history-empty">No URLs previewed yet.</p>
+    </div>
+</div>
+
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="features-section">
+            <div class="section-heading">
+                <span class="eyebrow">PLATFORM FEATURES</span>
+                <h2>Built for URL Analysis</h2>
+            </div>
+
+            <div class="features-grid">
+                <article class="feature-card">
+                    <span class="feature-icon">◈</span>
+                    <h3>Machine Learning</h3>
+                    <p>
+                        A URL classification model under development,
+                        with further evaluation and improvement planned.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon">⌁</span>
+                    <h3>Threat Indicators</h3>
+                    <p>
+                        Examine URL structure, suspicious keywords,
+                        encoded characters, and other indicators.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon">▤</span>
+                    <h3>Security Dashboard</h3>
+                    <p>
+                        A visual interface for future risk analysis,
+                        explanations, and scan history.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 PhishGuard. Cybersecurity Project.</p>
+        <p>Prototype • Not a verified security service</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
