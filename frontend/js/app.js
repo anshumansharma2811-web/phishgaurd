@@ -126,6 +126,21 @@ function renderHistory() {
 
         item.append(urlText, timeText);
         historyList.appendChild(item);
+
+item.title = "Click to reuse this URL";
+item.style.cursor = "pointer";
+
+item.addEventListener("click", () => {
+    urlInput.value = entry.url;
+
+    document.getElementById("scanner").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    urlInput.focus();
+});
+
     });
 }
 
