@@ -633,3 +633,42 @@ button, input {
 .nav-links a.active::after {
     width: 100%;
 }
+
+/* ===== SCANNER LOADING ANIMATION ===== */
+
+.scan-form button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 140px;
+}
+
+.scan-form button:disabled {
+    opacity: 0.75;
+    cursor: wait;
+    transform: none;
+}
+
+.loading-spinner {
+    width: 17px;
+    height: 17px;
+    border: 2px solid rgba(3, 19, 29, 0.25);
+    border-top-color: #03131d;
+    border-radius: 50%;
+    animation: spinner-rotate 0.7s linear infinite;
+}
+
+@keyframes spinner-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loading-spinner {
+        animation: none;
+        border-color: #03131d;
+        border-style: dotted;
+    }
+}

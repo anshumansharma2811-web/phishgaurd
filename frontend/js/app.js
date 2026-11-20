@@ -37,7 +37,17 @@ scanForm.addEventListener("submit", (event) => {
     }
 
     scanButton.disabled = true;
-    scanButton.textContent = "Preparing preview...";
+    scanButton.replaceChildren();
+
+const spinner = document.createElement("span");
+spinner.className = "loading-spinner";
+spinner.setAttribute("aria-hidden", "true");
+
+const loadingText = document.createElement("span");
+loadingText.textContent = "Preparing...";
+
+scanButton.append(spinner, loadingText);
+scanButton.setAttribute("aria-busy", "true");
 
     // Demonstration only: no network request or ML prediction.
     setTimeout(() => {
@@ -60,6 +70,7 @@ document.getElementById("protocolStatus").textContent =
 
         scanButton.disabled = false;
         scanButton.textContent = "Scan URL";
+        scanButton.removeAttribute("aria-busy");
 
         scanResult.scrollIntoView({
             behavior: "smooth",
