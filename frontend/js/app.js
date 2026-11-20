@@ -150,3 +150,37 @@ clearHistoryButton.addEventListener("click", () => {
 });
 
 renderHistory();
+
+/* ===== ACTIVE NAVIGATION ===== */
+
+const navLinks = document.querySelectorAll(".nav-links a");
+const sections = document.querySelectorAll(
+    "#home, #scanner, #features"
+);
+
+function updateActiveNavigation() {
+    let currentSection = "home";
+
+    sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop <= 160) {
+            currentSection = section.id;
+        }
+    });
+
+    navLinks.forEach((link) => {
+        const target = link.getAttribute("href");
+
+        link.classList.toggle(
+            "active",
+            target === `#${currentSection}`
+        );
+    });
+}
+
+window.addEventListener("scroll", updateActiveNavigation, {
+    passive: true
+});
+
+window.addEventListener("load", updateActiveNavigation);
