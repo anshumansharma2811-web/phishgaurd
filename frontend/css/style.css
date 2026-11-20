@@ -672,3 +672,179 @@ button, input {
         border-style: dotted;
     }
 }
+
+/* =========================================
+   STEP 10 — RESPONSIVE DESIGN IMPROVEMENTS
+========================================= */
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+
+    .navbar {
+        padding: 18px 5%;
+    }
+
+    .hero {
+        min-height: 520px;
+        padding: 100px 25px 75px;
+    }
+
+    .scanner-section,
+    .features-section {
+        padding: 60px 25px;
+    }
+
+    .features-grid {
+        gap: 16px;
+    }
+
+    .feature-card {
+        padding: 24px;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+
+    .navbar {
+        gap: 16px;
+    }
+
+    .brand {
+        font-size: 21px;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: space-around;
+        gap: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: 460px;
+        padding: 80px 20px 60px;
+    }
+
+    .hero h1 {
+        font-size: clamp(36px, 8vw, 54px);
+        line-height: 1.2;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        max-width: 420px;
+    }
+
+    .scanner-section,
+    .features-section {
+        padding: 50px 16px;
+    }
+
+    .scanner-card {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .result-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .result-metric {
+        padding: 16px;
+    }
+
+    .history-card {
+        padding: 20px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card {
+        padding: 25px;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+
+    .navbar {
+        padding: 15px;
+    }
+
+    .brand {
+        font-size: 19px;
+    }
+
+    .brand-icon {
+        font-size: 27px;
+    }
+
+    .status-indicator {
+        font-size: 9px;
+        padding: 6px 9px;
+    }
+
+    .hero {
+        padding: 65px 16px 50px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+    }
+
+    .primary-button {
+        padding: 13px 22px;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .scanner-card-header {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .scan-form input,
+    .scan-form button {
+        width: 100%;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .history-header {
+        flex-wrap: wrap;
+    }
+
+    .history-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer {
+        padding: 25px 16px;
+    }
+}
