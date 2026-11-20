@@ -848,3 +848,25 @@ button, input {
         padding: 25px 16px;
     }
 }
+
+/* ===== RESET SCANNER BUTTON ===== */
+
+.reset-button {
+    background: rgba(255, 255, 255, 0.04) !important;
+    color: var(--muted) !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: none !important;
+    padding: 15px 22px;
+}
+
+.reset-button:hover {
+    color: var(--text) !important;
+    border-color: var(--cyan) !important;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .reset-button {
+        width: 100%;
+    }
+}

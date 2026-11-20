@@ -195,3 +195,13 @@ window.addEventListener("scroll", updateActiveNavigation, {
 });
 
 window.addEventListener("load", updateActiveNavigation);
+
+/* ===== RESET SCANNER ===== */
+
+const resetButton = document.getElementById("resetButton");
+
+resetButton.addEventListener("click", () => {
+    urlInput.value = "";
+    scanResult.hidden = true;
+    urlInput.focus();
+});
