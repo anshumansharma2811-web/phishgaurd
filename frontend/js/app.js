@@ -5,7 +5,7 @@ const scanButton = document.getElementById("scanButton");
 const scanResult = document.getElementById("scanResult");
 const resultTitle = document.getElementById("resultTitle");
 const resultDescription = document.getElementById("resultDescription");
-
+let scanTimeout = null;
 scanForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -28,13 +28,17 @@ scanForm.addEventListener("submit", (event) => {
         if (!parsedURL.hostname.includes(".")) {
             throw new Error("Invalid hostname");
         }
-    } catch (error) {
-        scanResult.hidden = false;
-        resultTitle.textContent = "Invalid URL";
-        resultDescription.textContent =
-            "Please enter a valid HTTP or HTTPS URL.";
-        return;
-    }
+   
+} catch (error) {
+    scanResult.hidden = false;
+    scanResult.classList.add("result-error");
+
+    resultTitle.textContent = "Invalid URL";
+    resultDescription.textContent =
+        "Please enter a valid URL starting with https:// or http://";
+
+    return;
+}
 
     scanButton.disabled = true;
     scanButton.replaceChildren();
@@ -50,9 +54,12 @@ scanButton.append(spinner, loadingText);
 scanButton.setAttribute("aria-busy", "true");
 
     // Demonstration only: no network request or ML prediction.
-    setTimeout(() => {
-        scanResult.hidden = false;
-        saveHistory(parsedURL.href);
+    
+    scanTimeout = setTimeout(() => {
+        scanTimeout = null;
+       scanResult.hidden = false;
+scanResult.classList.remove("result-error");
+saveHistory(parsedURL.href);
         document.getElementById("formatStatus").textContent = "Valid";
 
 document.getElementById("protocolStatus").textContent =
@@ -200,8 +207,24 @@ window.addEventListener("load", updateActiveNavigation);
 
 const resetButton = document.getElementById("resetButton");
 
+
 resetButton.addEventListener("click", () => {
+    // Cancel any pending scanner preview.
+    if (scanTimeout !== null) {
+        clearTimeout(scanTimeout);
+        scanTimeout = null;
+    }
+
+    // Restore the scanner button.
+    scanButton.disabled = false;
+    scanButton.textContent = "Scan URL";
+    scanButton.removeAttribute("aria-busy");
+
+    // Clear the input and previous result.
     urlInput.value = "";
     scanResult.hidden = true;
+    scanResult.classList.remove("result-error");
+
     urlInput.focus();
 });
+

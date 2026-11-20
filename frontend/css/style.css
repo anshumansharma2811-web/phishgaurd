@@ -870,3 +870,21 @@ button, input {
         width: 100%;
     }
 }
+
+/* ===== SCANNER ERROR HANDLING ===== */
+
+.scan-result.result-error {
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.45);
+}
+
+.scan-result.result-error .eyebrow,
+.scan-result.result-error #resultTitle {
+    color: #f87171;
+}
+
+.scan-result.result-error .result-badge {
+    color: #f87171;
+    border-color: rgba(239, 68, 68, 0.35);
+    background: rgba(239, 68, 68, 0.08);
+}
