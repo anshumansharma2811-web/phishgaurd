@@ -5,6 +5,7 @@ const scanButton = document.getElementById("scanButton");
 const scanResult = document.getElementById("scanResult");
 const resultTitle = document.getElementById("resultTitle");
 const resultDescription = document.getElementById("resultDescription");
+const resultBadge = document.getElementById("resultBadge");
 let scanTimeout = null;
 scanForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -29,6 +30,7 @@ scanForm.addEventListener("submit", (event) => {
             throw new Error("Invalid hostname");
         }
    
+
 } catch (error) {
     scanResult.hidden = false;
     scanResult.classList.add("result-error");
@@ -37,8 +39,13 @@ scanForm.addEventListener("submit", (event) => {
     resultDescription.textContent =
         "Please enter a valid URL starting with https:// or http://";
 
+    // Clear metrics from any previous successful preview.
+    document.getElementById("formatStatus").textContent = "Invalid";
+    document.getElementById("protocolStatus").textContent = "Unknown";
+
     return;
 }
+
 
     scanButton.disabled = true;
     scanButton.replaceChildren();
@@ -59,6 +66,7 @@ scanButton.setAttribute("aria-busy", "true");
         scanTimeout = null;
        scanResult.hidden = false;
 scanResult.classList.remove("result-error");
+resultBadge.textContent = "INPUT ERROR";
 saveHistory(parsedURL.href);
         document.getElementById("formatStatus").textContent = "Valid";
 
@@ -224,6 +232,7 @@ resetButton.addEventListener("click", () => {
     urlInput.value = "";
     scanResult.hidden = true;
     scanResult.classList.remove("result-error");
+    resultBadge.textContent = "PREVIEW ONLY";
 
     urlInput.focus();
 });
