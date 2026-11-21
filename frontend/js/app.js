@@ -138,7 +138,7 @@ function renderHistory() {
         return;
     }
 
-    history.forEach((entry) => {
+    history.forEach((entry, index) => {
         const item = document.createElement("div");
         item.className = "history-item";
 
@@ -150,8 +150,31 @@ function renderHistory() {
         timeText.className = "history-time";
         timeText.textContent = entry.time;
 
-        item.append(urlText, timeText);
-        historyList.appendChild(item);
+       
+const deleteButton = document.createElement("button");
+deleteButton.type = "button";
+deleteButton.className = "history-delete";
+deleteButton.textContent = "Delete";
+deleteButton.title = "Remove this URL from history";
+
+deleteButton.addEventListener("click", (event) => {
+    // Prevent the history item's click handler from running.
+    event.stopPropagation();
+
+    const updatedHistory = getHistory();
+    updatedHistory.splice(index, 1);
+
+    sessionStorage.setItem(
+        HISTORY_KEY,
+        JSON.stringify(updatedHistory)
+    );
+
+    renderHistory();
+});
+
+item.append(urlText, timeText, deleteButton);
+historyList.appendChild(item);
+
 
 item.title = "Click to reuse this URL";
 item.style.cursor = "pointer";

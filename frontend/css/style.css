@@ -888,3 +888,37 @@ button, input {
     border-color: rgba(239, 68, 68, 0.35);
     background: rgba(239, 68, 68, 0.08);
 }
+
+/* ===== SCAN HISTORY DELETE BUTTON ===== */
+
+.history-delete {
+    background: rgba(239, 68, 68, 0.08);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+
+.history-delete:hover {
+    background: rgba(239, 68, 68, 0.18);
+    border-color: #f87171;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.15);
+    transform: translateY(-2px);
+}
+
+.history-delete:focus-visible {
+    outline: 2px solid #f87171;
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    .history-delete {
+        padding: 7px 10px;
+        font-size: 11px;
+    }
+}
