@@ -97,6 +97,7 @@ document.getElementById("protocolStatus").textContent =
 /* ===== SESSION SCAN HISTORY ===== */
 
 const historyList = document.getElementById("historyList");
+const historySearch = document.getElementById("historySearch");
 const clearHistoryButton = document.getElementById("clearHistory");
 
 const HISTORY_KEY = "phishguard_preview_history";
@@ -126,19 +127,33 @@ function saveHistory(url) {
 }
 
 function renderHistory() {
-    const history = getHistory();
+    
+const history = getHistory();
+const searchTerm = historySearch.value.trim().toLowerCase();
 
-    historyList.replaceChildren();
+const filteredHistory = history
+    .map((entry, index) => ({ entry, index }))
+    .filter(({ entry }) =>
+        entry.url.toLowerCase().includes(searchTerm)
+    );
 
-    if (history.length === 0) {
-        const empty = document.createElement("p");
-        empty.className = "history-empty";
-        empty.textContent = "No URLs previewed yet.";
-        historyList.appendChild(empty);
-        return;
-    }
+historyList.replaceChildren();
 
-    history.forEach((entry, index) => {
+   
+if (filteredHistory.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "history-empty";
+
+    empty.textContent = history.length === 0
+        ? "No URLs previewed yet."
+        : "No matching URLs found.";
+
+    historyList.appendChild(empty);
+    return;
+}
+
+
+    filteredHistory.forEach(({ entry, index }) => {
         const item = document.createElement("div");
         item.className = "history-item";
 
@@ -169,7 +184,12 @@ deleteButton.addEventListener("click", (event) => {
         JSON.stringify(updatedHistory)
     );
 
+   /* ===== LIVE HISTORY SEARCH ===== */
+
+historySearch.addEventListener("input", () => {
     renderHistory();
+});
+ renderHistory();
 });
 
 item.append(urlText, timeText, deleteButton);
@@ -197,6 +217,13 @@ clearHistoryButton.addEventListener("click", () => {
     sessionStorage.removeItem(HISTORY_KEY);
     renderHistory();
 });
+
+/* ===== LIVE HISTORY SEARCH ===== */
+
+historySearch.addEventListener("input", () => {
+    renderHistory();
+});
+
 
 renderHistory();
 

@@ -922,3 +922,38 @@ button, input {
         font-size: 11px;
     }
 }
+
+/* ===== SCAN HISTORY SEARCH ===== */
+
+.history-search-container {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.history-search {
+    width: 100%;
+    padding: 13px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #e5f4ff;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.history-search::placeholder {
+    color: #94a3b8;
+}
+
+.history-search:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
+
+@media (max-width: 480px) {
+    .history-search {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
