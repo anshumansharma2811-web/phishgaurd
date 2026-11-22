@@ -160,6 +160,9 @@ if (filteredHistory.length === 0) {
     filteredHistory.forEach(({ entry, index }) => {
         const item = document.createElement("div");
         item.className = "history-item";
+        item.setAttribute("role", "button");
+item.setAttribute("tabindex", "0");
+item.setAttribute("aria-label", `Reuse URL: ${entry.url}`);
 
         const urlText = document.createElement("span");
         urlText.className = "history-url";
@@ -214,6 +217,24 @@ item.addEventListener("click", () => {
 
     urlInput.focus();
 });
+
+item.addEventListener("keydown", (event) => {
+    if (event.target !== item) return;
+
+    if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+
+        urlInput.value = entry.url;
+
+        document.getElementById("scanner").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        urlInput.focus();
+    }
+});
+
 
     });
 }
