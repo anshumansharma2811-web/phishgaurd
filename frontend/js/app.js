@@ -164,6 +164,7 @@ if (filteredHistory.length === 0) {
         const urlText = document.createElement("span");
         urlText.className = "history-url";
         urlText.textContent = entry.url;
+        urlText.title = entry.url;
 
         const timeText = document.createElement("span");
         timeText.className = "history-time";

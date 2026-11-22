@@ -577,6 +577,13 @@ button, input {
 }
 
 .history-url {
+
+min-width: 0;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+flex: 1;
+
     color: var(--text);
     font-size: 14px;
     overflow-wrap: anywhere;
