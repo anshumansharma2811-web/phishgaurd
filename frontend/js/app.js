@@ -98,6 +98,7 @@ document.getElementById("protocolStatus").textContent =
 
 const historyList = document.getElementById("historyList");
 const historySearch = document.getElementById("historySearch");
+const historyCounter = document.getElementById("historyCounter");
 const clearHistoryButton = document.getElementById("clearHistory");
 
 const HISTORY_KEY = "phishguard_preview_history";
@@ -127,6 +128,9 @@ function saveHistory(url) {
 }
 
 function renderHistory() {
+    const totalSaved = getHistory().length;
+
+historyCounter.textContent = `${totalSaved} / 10`;
     
 const history = getHistory();
 const searchTerm = historySearch.value.trim().toLowerCase();
