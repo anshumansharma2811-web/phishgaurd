@@ -158,12 +158,8 @@ if (filteredHistory.length === 0) {
 
 
     filteredHistory.forEach(({ entry, index }) => {
-        const item = document.createElement("div");
-        item.className = "history-item";
-        item.setAttribute("role", "button");
-item.setAttribute("tabindex", "0");
-item.setAttribute("aria-label", `Reuse URL: ${entry.url}`);
-
+       const item = document.createElement("div");
+item.className = "history-item";
         const urlText = document.createElement("span");
         urlText.className = "history-url";
         urlText.textContent = entry.url;
@@ -172,6 +168,27 @@ item.setAttribute("aria-label", `Reuse URL: ${entry.url}`);
         const timeText = document.createElement("span");
         timeText.className = "history-time";
         timeText.textContent = entry.time;
+
+const reuseButton = document.createElement("button");
+reuseButton.type = "button";
+reuseButton.className = "history-reuse";
+reuseButton.textContent = "Reuse";
+reuseButton.title = "Reuse this URL in the scanner";
+reuseButton.setAttribute("aria-label", `Reuse URL: ${entry.url}`);
+
+reuseButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    urlInput.value = entry.url;
+
+    document.getElementById("scanner").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    urlInput.focus();
+});
+
 
        
 const deleteButton = document.createElement("button");
@@ -191,49 +208,17 @@ deleteButton.addEventListener("click", (event) => {
         HISTORY_KEY,
         JSON.stringify(updatedHistory)
     );
+     renderHistory();
+    });
 
    /* ===== LIVE HISTORY SEARCH ===== */
 
-historySearch.addEventListener("input", () => {
-    renderHistory();
-});
- renderHistory();
-});
 
-item.append(urlText, timeText, deleteButton);
+
+item.append(urlText, timeText, reuseButton, deleteButton);
 historyList.appendChild(item);
 
 
-item.title = "Click to reuse this URL";
-item.style.cursor = "pointer";
-
-item.addEventListener("click", () => {
-    urlInput.value = entry.url;
-
-    document.getElementById("scanner").scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-
-    urlInput.focus();
-});
-
-item.addEventListener("keydown", (event) => {
-    if (event.target !== item) return;
-
-    if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-
-        urlInput.value = entry.url;
-
-        document.getElementById("scanner").scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-        urlInput.focus();
-    }
-});
 
 
     });
