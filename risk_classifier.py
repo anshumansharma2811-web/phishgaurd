@@ -1,11 +1,16 @@
 
+from pathlib import Path
+
 import joblib
 import pandas as pd
-
 from feature_extraction import extract_features
 
 
-MODEL_PATH = "models/phishguard_context_model.pkl"
+
+BASE_DIR = Path(__file__).resolve().parent
+
+MODEL_PATH = BASE_DIR / "models" / "phishguard_context_model.pkl"
+
 
 # Initial application risk bands
 LOW_RISK_LIMIT = 0.30

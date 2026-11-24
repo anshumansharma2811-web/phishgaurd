@@ -1,0 +1,55 @@
+PHISHGUARD V3 — EXPERIMENTAL MODEL RESULTS
+==================================================
+
+DATASET
+Total URLs: 95,908
+Legitimate URLs: 48,009
+Phishing URLs: 47,899
+
+EVALUATION
+Training URLs: 76,647
+Testing URLs: 19,261
+Overlapping train/test domains: 0
+
+FEATURE ABLATION EXPERIMENTS
+
+V3-A:
+Features: 36
+Accuracy: 90.64%
+Homepage classification: 0/10
+
+V3-B:
+Features: 34
+Accuracy: 86.91%
+Homepage classification: 6/10
+
+V3-C:
+Features: 33
+Accuracy: 87.76%
+Precision: 87.88%
+Recall: 87.26%
+F1-score: 87.57%
+False positive rate: 11.75%
+Homepage classification: 10/10
+
+REMOVED FEATURES
+- path_length
+- url_length
+- decoded_url_length
+- url_entropy
+
+ADDITIONAL SMOKE TESTING
+Expected legitimate URLs correctly classified: 4/6
+Synthetic suspicious patterns detected: 3/3
+
+KNOWN LIMITATIONS
+- Legitimate login and form-related URLs can be misclassified.
+- Five original homepage diagnostic domains overlap with training domains.
+- Synthetic suspicious URLs are not verified phishing samples.
+- Model scores are not calibrated safety probabilities.
+- Independent labelled evaluation is still required.
+- V2 and V3 used different evaluation splits.
+
+MODEL STATUS
+V3-C is the provisional candidate for further evaluation.
+Not approved for production deployment.
